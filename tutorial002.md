@@ -417,3 +417,104 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         `, SpriteKind.Felle)
 })
 ```
+### Steg 5 Plassere teiner
+Foreløpig skjer det ikke noe når du trykker på A. For å plassere ut en felle der roboten din er trenger du blokken ``||scene:place mySprite on top of tilemap col 0 row 0||``.
+Hent den fra ``||scen:Scene||``-menyen og plasser den inne i ``||controller:on A button pressed||``-blokken under resten av koden din.
+Klikk Next for å gå videre!
+
+```blocks
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    teine = sprites.create(img`
+        . . . . . . f f f f f f f f f f 
+        . . . . . f f . 1 . 1 . 1 . f f 
+        . . . . f 1 f 1 . 1 . 1 . f . f 
+        . . . f 1 . f . 1 . 1 . f . 1 f 
+        . . f 1 . 1 f 1 . 1 . f . 1 . f 
+        . f 1 . 1 . f . 1 . f . 1 . 1 f 
+        f f f f f f f f f f . 1 . 1 . f 
+        f . 1 . 1 . f . f f 1 . 1 . 1 f 
+        f 1 . 1 . 1 f f . f . 1 . 1 . f 
+        f . 1 . 1 . f f f f f f f f f f 
+        f 1 . 1 . f . 1 . f 1 . 1 . f . 
+        f . 1 . f . 1 . 1 f . 1 . f . . 
+        f 1 . f . 1 . 1 . f 1 . f . . . 
+        f . f . 1 . 1 . 1 f . f . . . . 
+        f f . 1 . 1 . 1 . f f . . . . . 
+        f f f f f f f f f f . . . . . . 
+        `, SpriteKind.Felle)
+    tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
+})
+```
+
+### Steg 6 Plassere teiner
+Du må gjøre noen endringe på den siste blokken. Først må du endre ordet ``||variables:mySprite||`` til ``||variables:teine||`` ved å trykke på ``||variables:mySprite||`` i ``||scene:place mySprite on top of tilemap col 0 row 0||``-blokken og velge ``||variables:teine||``.
+Når du har gjort det, trykker du på Next.
+```blocks
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    teine = sprites.create(img`
+        . . . . . . f f f f f f f f f f 
+        . . . . . f f . 1 . 1 . 1 . f f 
+        . . . . f 1 f 1 . 1 . 1 . f . f 
+        . . . f 1 . f . 1 . 1 . f . 1 f 
+        . . f 1 . 1 f 1 . 1 . f . 1 . f 
+        . f 1 . 1 . f . 1 . f . 1 . 1 f 
+        f f f f f f f f f f . 1 . 1 . f 
+        f . 1 . 1 . f . f f 1 . 1 . 1 f 
+        f 1 . 1 . 1 f f . f . 1 . 1 . f 
+        f . 1 . 1 . f f f f f f f f f f 
+        f 1 . 1 . f . 1 . f 1 . 1 . f . 
+        f . 1 . f . 1 . 1 f . 1 . f . . 
+        f 1 . f . 1 . 1 . f 1 . f . . . 
+        f . f . 1 . 1 . 1 f . f . . . . 
+        f f . 1 . 1 . 1 . f f . . . . . 
+        f f f f f f f f f f . . . . . . 
+        `, SpriteKind.Felle)
+    // @highlight
+    tiles.placeOnTile(teine, tiles.getTileLocation(0, 0))
+})
+```
+
+### Steg 7 Plassere teiner
+Nå trenger du den ovale blokken ``||scene:tilemap location of mySprite||`` fra ``||scene:Scene||``-menyen.
+Dra den inn i det ovale feltet der det står ``||scene:tilemap col 0 row 0||``, slik at den erstatter det som står der.
+Nå må du endre ordet ``||variables:mySprite||`` til ``||variables:minRobot||`` ved og klikke på det og velge ``||variables:minRobot||``.
+Test spillet og sjekk om roboten din legger feller!
+Klikk Next for å gå videre.
+
+```blocks
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    teine = sprites.create(img`
+        . . . . . . f f f f f f f f f f 
+        . . . . . f f . 1 . 1 . 1 . f f 
+        . . . . f 1 f 1 . 1 . 1 . f . f 
+        . . . f 1 . f . 1 . 1 . f . 1 f 
+        . . f 1 . 1 f 1 . 1 . f . 1 . f 
+        . f 1 . 1 . f . 1 . f . 1 . 1 f 
+        f f f f f f f f f f . 1 . 1 . f 
+        f . 1 . 1 . f . f f 1 . 1 . 1 f 
+        f 1 . 1 . 1 f f . f . 1 . 1 . f 
+        f . 1 . 1 . f f f f f f f f f f 
+        f 1 . 1 . f . 1 . f 1 . 1 . f . 
+        f . 1 . f . 1 . 1 f . 1 . f . . 
+        f 1 . f . 1 . 1 . f 1 . f . . . 
+        f . f . 1 . 1 . 1 f . f . . . . 
+        f f . 1 . 1 . 1 . f f . . . . . 
+        f f f f f f f f f f . . . . . . 
+        `, SpriteKind.Felle)
+    // @highlight
+    tiles.placeOnTile(teine, minRobot.tilemapLocation())
+})
+```
+
+### Steg 8 Fange robotkrabbene
+Nå som du kan legge feller, må du få krabbene til å forsvinne når de går i en felle.
+Til det trenger du en ``||sprites:on sprite of kind Player overlaps othersprite of kind Player||``-blokk fra ``||sprites:Sprites||``-menyen.
+Hent en og legg den ved siden av resten av koden din.
+Klikk Next når du har fått blokken ut på arbeidsbordet.
+
+```blocks
+// @highlight
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Player, function (sprite, otherSprite) {
+	
+})
+```
