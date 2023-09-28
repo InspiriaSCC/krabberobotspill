@@ -175,9 +175,9 @@ for (let index = 0; index < 4; index++) {
 
 Professor K. Rabbe har laget en gigantisk hær av robotkrabber! Du må lage alt roboten din trenger for å overleve angrepene fra robotkrabbene. Steg 1: Test spillet og se om du klarer å overleve første angrepsbølge!
 
-### Steg 1: Bruk teiner fra fabrikken til å fange krabberobotene før de skader roboten din.
+### Steg 1: Test spillet!
 
-Lag en krabbeteinesprite! 
+Som du ser følger krabberobotene etter roboten din, og roboten kan ikke gjøre noe for å stoppe dem. Du må lage feller som kan fange krabberobotene. Klikk på ``||scene:Next||`` under for å lære hvordan du lager en teine! 
 
 ```blocks
 namespace myTiles {
@@ -348,6 +348,72 @@ for (let index = 0; index < 4; index++) {
 }
 ```
 
+### Steg 2 Legg feller med å trykke på en knapp!
+Roboten din skal legge feller ved at du trykker på knapp A. Da trenger du blokken ``||controller:on A button pressed||``. Hent den fra ``||controller:Controller||``-menyen og plasser den ved siden av koden din.
 
 <script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
 
+``` blocks
+// @highlight
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+	
+})
+```
+### Steg 3 Lag en teine-sprite
+Inni blokken du la sist skal vi lage en sprite. En sprite er et lite, interaktivt bilde, akkurat som krabberobotene og roboten du kontrollerer.
+Hent en ``||sprites:set mySprite2 to sprite of kind Player||``-blokk fra ``||sprites:Sprites||``-menyen. Klikk på Next når du er ferdig.
+
+```blocks
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    // @highlight
+    mySprite2 = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Player)
+})
+```
+### Steg 4 Tegn teine-Spriten
+En teine er en boks av netting til å fange fisk eller krepsdyr i. Klikk på det grå kvadratet i ``||sprites:set mySprite2 to sprite of kind Player||``-blokken og tegn en firkant eller en boks ved å bruke tegneverktøyet i sprite-editoren.
+Sprite-editoren er en programsnutt som lar deg tegne og redigere sprites.
+Ikke glem å trykke på ``||loops:Done||``-knappen nede i høyre hjørne av editoren når du er ferdig.
+Klikk på ordet ``||variables:mySprite2||`` i ``||sprites:set mySprite2 to sprite of kind player||``-blokken og velg ``||variables:Rename variable||``. Skriv inn ``||variables:teine||`` og trykk på ``||loops:Ok||``.
+Klikk på ordet ``||sprites:Player||`` i ``||sprites:set mySprite2 to sprite of kind Player||``-blokken og velg ``||sprites:Add a new kind||``. Skriv inn ``||sprites:Felle||`` og trykk på ``||loops:Ok||``.
+Klikk på Next når du er fornøyd.
+
+```blocks
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    // @highlight
+    teine = sprites.create(img`
+        . . . . . . f f f f f f f f f f 
+        . . . . . f f . 1 . 1 . 1 . f f 
+        . . . . f 1 f 1 . 1 . 1 . f . f 
+        . . . f 1 . f . 1 . 1 . f . 1 f 
+        . . f 1 . 1 f 1 . 1 . f . 1 . f 
+        . f 1 . 1 . f . 1 . f . 1 . 1 f 
+        f f f f f f f f f f . 1 . 1 . f 
+        f . 1 . 1 . f . f f 1 . 1 . 1 f 
+        f 1 . 1 . 1 f f . f . 1 . 1 . f 
+        f . 1 . 1 . f f f f f f f f f f 
+        f 1 . 1 . f . 1 . f 1 . 1 . f . 
+        f . 1 . f . 1 . 1 f . 1 . f . . 
+        f 1 . f . 1 . 1 . f 1 . f . . . 
+        f . f . 1 . 1 . 1 f . f . . . . 
+        f f . 1 . 1 . 1 . f f . . . . . 
+        f f f f f f f f f f . . . . . . 
+        `, SpriteKind.Felle)
+})
+```
