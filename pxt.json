@@ -10,7 +10,8 @@
         "main.ts",
         "README.md",
         "assets.json",
-        "tutorial001.md"
+        "tutorial001.md",
+        "tutorial002.md"
     ],
     "testFiles": [
         "test.ts"
