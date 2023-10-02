@@ -169,10 +169,10 @@ for (let index = 0; index < 4; index++) {
 ```
 
 # Lag et spill om den store krabbekrigen
-## introduksjon
-### intro @unplugged
+## Introduksjon
+### Intro @unplugged
 
-Professor K. Rabbe har laget en gigantisk hær av robotkrabber! Du må lage alt roboten din trenger for å overleve angrepene fra robotkrabbene. Steg 1: Test spillet og se om du klarer å overleve første angrepsbølge!
+Professor K. Rabbe har laget en gigantisk hær av krabberoboter for å overta verden! Du og roboten din er alt som kan stoppe ham! Hjelp roboten din til å få kontroll på kraberobotene. Steg 1: Test spillet og se om du klarer å overleve første angrepsbølge!
 
 ### Steg 1: Test spillet!
 
@@ -350,7 +350,7 @@ for (let index = 0; index < 4; index++) {
 
 ### Steg 2 Legg feller med å trykke på en knapp!
 Roboten din skal legge feller ved at du trykker på knapp A. Da trenger du blokken ``||controller:on A button pressed||``. Hent den fra ``||controller:Controller||``-menyen og plasser den ved siden av koden din.
-Klikk på Next for å gå videre.
+Klikk på ``||scene:Next||`` for å gå videre.
 
 
 ``` blocks
@@ -361,7 +361,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 ```
 ### Steg 3 Lag en teine-sprite
 Inni blokken du la sist skal vi lage en sprite. En sprite er et lite, interaktivt bilde, akkurat som krabberobotene og roboten du kontrollerer.
-Hent en ``||sprites:set mySprite2 to sprite of kind Player||``-blokk fra ``||sprites:Sprites||``-menyen. Klikk på Next når du er ferdig.
+Hent en ``||sprites:set mySprite2 to sprite of kind Player||``-blokk fra ``||sprites:Sprites||``-menyen. Klikk på ``||scene:Next||`` når du er ferdig.
 
 ```blocks
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -392,7 +392,7 @@ Sprite-editoren er en programsnutt som lar deg tegne og redigere sprites. Om du 
 Ikke glem å trykke på ``||loops:Done||``-knappen nede i høyre hjørne av editoren når du er ferdig.
 Klikk på ordet ``||variables:mySprite2||`` i ``||sprites:set mySprite2 to sprite of kind player||``-blokken og velg ``||variables:Rename variable||``. Skriv inn ``||variables:teine||`` og trykk på ``||loops:Ok||``.
 Klikk på ordet ``||sprites:Player||`` i ``||sprites:set mySprite2 to sprite of kind Player||``-blokken og velg ``||sprites:Add a new kind||``. Skriv inn ``||sprites:Felle||`` og trykk på ``||loops:Ok||``.
-Klikk på Next når du er fornøyd.
+Klikk på ``||scene:Next||`` når du er fornøyd.
 
 ```blocks
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -420,7 +420,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 ### Steg 5 Plassere teiner
 Foreløpig skjer det ikke noe når du trykker på A. For å plassere ut en felle der roboten din er trenger du blokken ``||scene:place mySprite on top of tilemap col 0 row 0||``.
 Hent den fra ``||scene:Scene||``-menyen og plasser den inne i ``||controller:on A button pressed||``-blokken under resten av koden din.
-Klikk Next for å gå videre!
+Klikk ``||scene:Next||`` for å gå videre!
 
 ```blocks
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -451,6 +451,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 ### Steg 6 Plassere teiner
 Nå trenger du den ovale blokken ``||scene:tilemapLocation of mySprite||`` fra ``||scene:Scene||``-menyen.
 Dra den inn i det ovale feltet der det står ``||scene:tilemap col 0 row 0||``, slik at den erstatter det som står der.
+Pass på at ``||scene:tilemapLocation of mySprite||`` erstatter hele den store ``||scene:tilemap col 0 row 0||``-ovalen, og at den ikke havner i et av de små feltene med tall.
+Klikk ``||scene:Next||`` når du har fått det til.
 
 ```blocks
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -479,9 +481,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 ```
 
 ### Steg 7 Plassere teiner
-Du må gjøre noen endringer i de siste blokkene. Først må du endre den første ``||variables:mySprite||`` til ``||variables:teine||`` ved å trykke på ``||variables:mySprite||`` i ``||scene:place mySprite on top of tilemapLocation of mySprite||``-blokken og velge ``||variables:teine||``.
+Du må gjøre enda noen endringer i de siste blokkene. Først må du endre den første ``||variables:mySprite||`` til ``||variables:teine||`` ved å trykke på ``||variables:mySprite||`` i ``||scene:place mySprite on top of tilemapLocation of mySprite||``-blokken og velge ``||variables:teine||``.
 Klikk på lyspæren om du er usikker på hvilken ``||variables:mySprite||`` som skal endres.
-Når du har gjort det, trykker du på Next.
+Når du har gjort det, trykker du på ``||scene:Next||``.
 
 ```blocks
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -508,9 +510,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 ```
 ### Steg 8 Plassere teiner
-Nå må du endre den andre ``||variables:mySprite||`` til ``||variables:minRobot||`` ved å klikke på det og velge ``||variables:minRobot||``.
+Nå må du endre den andre ``||variables:mySprite||`` til ``||variables:minRobot||`` ved å klikke på den og velge ``||variables:minRobot||``.
 Test spillet og sjekk om roboten din legger feller!
-Klikk Next for å gå videre.
+Klikk ``||scene:Next||`` for å gå videre.
 
 ```blocks
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -542,7 +544,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 Nå som du kan legge feller, må du få krabbene til å forsvinne når de går i en felle.
 Til det trenger du først en ``||sprites:on sprite of kind Player overlaps otherSprite of kind Player||``-blokk fra ``||sprites:Sprites||``-menyen.
 Hent en og legg den ved siden av resten av koden din.
-Klikk Next når du har fått blokken ut på arbeidsbordet.
+Klikk ``||scene:Next||`` når du har fått blokken ut på arbeidsbordet.
 
 ```blocks
 // @highlight
@@ -554,6 +556,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Player, function (sprite, otherS
 ### Steg 10 Fange krabberobotene
 Nå skal du få krabbene til å bli borte når de går i fella. Til det trenger du en ``||sprites:destroy mySprite||``-blokk.
 Hent en fra ``||sprites:Sprites||``-menyen og legg den inn i ``||sprites:on sprite of kind Player overlaps otherSprite of kind Player||``-blokken.
+Klikk ``||scene:Next||`` når du har gjort det.
 
 ```blocks
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Player, function (sprite, otherSprite) {
@@ -569,7 +572,7 @@ Foreløpig er begge disse av typen ``||sprites:Player||``. Nå skal du endre typ
 Den første, som heter ``||variables:sprite||``, skal være av typen ``||sprites:Felle||``.
 Klikk på ordet ``||sprites:Player||`` etter ordet ``||variables:sprite||`` og velg ``||sprites:Felle||`` fra menyen som dukker opp.
 Så klikker du på ordet ``||sprites:Player||`` etter ordet ``||variables:otherSprite||`` og velger ``||sprites:Enemy||``.
-Klikk Next når du har gjort dette.
+Klikk ``||scene:Next||`` når begge sprite-typene er endret.
 
 ```blocks
 // @highlight
@@ -579,12 +582,12 @@ sprites.onOverlap(SpriteKind.Felle, SpriteKind.Enemy, function (sprite, otherSpr
 ```
 
 ### Steg 12 Fange krabberobotene
-Siden det kun er teinene som er sprites av typen "Felle", vil spriten som blokken kaller ``||variables:sprite||`` være en teine,
+Siden det kun er teinene du legger ut som er sprites av typen "Felle", vil spriten som blokken kaller ``||variables:sprite||`` være en teine,
 og siden det kun er krabberobotene som er av typen "Enemy", vil spriten ``||variables:otherSprite||`` være en krabberobot.
 For at krabberoboten skal bli borte, må vi få blokken ``||sprites:destroy mySprite||`` til å ødelegge ``||variables:otherSprite||``.
 Klikk på ovalen der det står ``||variables:otherSprite||`` i ``||sprites:on sprite of kind Felle overlaps othersprite of kind Enemy||``-blokken og dra den ned i feltet der det står ``||variables:mySprite||`` i blokken ``||sprites:destroy mySprite||``, slik at det står ``||variables:otherSprite||`` der.
 Test spillet og sjekk at krabberobotene blir borte når de går i en teine.
-Klikk Next for å komme videre.
+Klikk ``||scene:Next||`` for å komme videre.
 
 ```blocks
 sprites.onOverlap(SpriteKind.Felle, SpriteKind.Enemy, function (sprite, otherSprite) {
@@ -597,24 +600,29 @@ sprites.onOverlap(SpriteKind.Felle, SpriteKind.Enemy, function (sprite, otherSpr
 For å få poeng hver gang du fanger en krabberobot, trenger du en blokk som heter ``||info:change score by 1||`` fra ``||info:Info||``-menyen.
 Hent den og legg den inn nederst i ``||sprites:on sprite of kind Felle overlaps othersprite of kind Enemy||``-blokken.
 Nå får du et poeng for hver krabberobot som går i fella.
-Test spillet før du klikker Next.
+Test spillet før du klikker ``||scene:Next||``.
 
 ```blocks
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     // @highlight
-    info.changeScoreBy(1)
     sprites.destroy(otherSprite)
+    info.changeScoreBy(1)
 })
 ```
 
+### Spøkelsesteiner @unplugged 
+Krabbeteiner, krepseteiner og hummerteiner som blir mistet, blir liggende på havbunnen.
+Siden de ofte er laget av plast eller andre materialer som ikke brytes ned, fortsetter de å fange dyr så lenge de blir liggende.
+Da kalles de spøkelsesteiner.
+På nye teiner er det krav om at de må være laget slik at de åpnes når de blir liggende lenge, slik at dyr som går i fella lett kan rømme.
 
 ### Steg 14 Fjerne brukte teiner
 Som du ser blir teinene du slipper liggende på spillebrettet for alltid, akkurat som spøkelsesteiner i virkeligheten.
-Det kan gjøre at spillet blir for enkelt, og det ser ganske rotete ut.
-For å gjøre teinene litt mer miljøvennlige, og spillet litt vanskeligere og mindre rotete, skal vi få dem til å forsvinne etter et halvt sekund.
-Det må vi gjøre i den samme blokken med kode som vi brukte for å lage teinene, ``||controller:on A button pressed||``-blokken
+For å gjøre teinene litt mer miljøvennlige, skal du få dem til å teleportere bort etter et halvt sekund.
+Det må du gjøre i den samme blokken med kode som du brukte for å lage teinene, ``||controller:on A button pressed||``-blokken, så du må legge til litt mer kode der.
 Du trenger to blokker, ``||loops:pause 100 ms||`` fra ``||loops:Loops||``-menyen og ``||sprites:destroy mySprite||`` fra ``||sprites:Sprites||`` menyen.
-Hent dem og legg dem inn i ``||controller:on A button pressed||``-blokken under ``||scene:place mySprite on top of minRobot||``.
+Hent dem og legg dem inn i ``||controller:on A button pressed||``-blokken under ``||scene:place teine on top of tilemapLocation of minRobot||``.`
+Klikk på ``||scene:Next||`` når du er ferdig.
 
 ```blocks
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -644,10 +652,10 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 ```
 ### Steg 15 Bestem hvor lenge teinene skal ligge på spillebrettet
-Du må gjøre noen endringer på de to siste blokkene du brukte.
+Du må gjøre et par endringer på de to siste blokkene du brukte.
 Endre 100 ms til 500 ms i ``||loops:pause 100 ms||``-blokken, og endre ``||variables:mySprite||`` til ``||variables:teine||`` i ``||sprites:destroy mySprite||``-blokken.
-Nå kan du bare legge én og én teine, og hver teine varer bare i et halvt sekund før den forsvinner, og du kan legge ut den neste.
-Klikk Next for å gå videre.
+Nå kan du bare legge én og én teine, og hver teine varer bare i et halvt sekund før den fteleporteres bort, og du kan legge ut den neste.
+Klikk ``||scene:Next||`` for å gå videre.
 
 ```blocks
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -680,7 +688,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 Du kan nå gjøre spillet vanskeligere på flere måter. Du kan for eksempel starte med mange flere krabberoboter.
 Om du endrer tallet 4 øverst i den grønne ``||loops:repeat 4 times||``-blokken til et høyere tall, lages det like mange krabberoboter som tallet du setter inn.
 Klarer du å overleve 25 krabberoboter? Endre tallet til 25 og test!
-klikk Next når du har testet noen ganger.
+klikk ``||scene:Next||`` når du har testet noen ganger.
 
 ```blocks
 // @highlight
@@ -713,7 +721,7 @@ En annen måte å gjøre spillet vanskeligere på, er å begrense tiden du har t
 Du kan sette inn en nedtelling i slutten av ``||loops:on start||``-blokken. Nedtellingsblokken finner du i ``||info:Info||``-menyen.
 Hent en ``||info:start countdown 10 s||`` og sett den inn nederst i ``||loops:on start||``-blokken.
 Du kan velge hvor mange sekunder du har til rådighet ved å endre tallet 10 til noe annet.
-Klikk Next når du har testet spillet og er fornøyd med valg av tid.
+Klikk ``||scene:Next||`` når du har testet spillet og er fornøyd med valg av tid. Hvor mange poeng klarer du på 10 sekunder?
 
 ```blocks
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
