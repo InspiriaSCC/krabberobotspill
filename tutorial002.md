@@ -447,36 +447,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 ```
 
+
+
 ### Steg 6 Plassere teiner
-Du må gjøre noen endringer på den siste blokken. Først må du endre ordet ``||variables:mySprite||`` til ``||variables:teine||`` ved å trykke på ``||variables:mySprite||`` i ``||scene:place mySprite on top of tilemap col 0 row 0||``-blokken og velge ``||variables:teine||``.
-Når du har gjort det, trykker du på Next.
-
-```blocks
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    teine = sprites.create(img`
-        . . . . . . f f f f f f f f f f 
-        . . . . . f f . 1 . 1 . 1 . f f 
-        . . . . f 1 f 1 . 1 . 1 . f . f 
-        . . . f 1 . f . 1 . 1 . f . 1 f 
-        . . f 1 . 1 f 1 . 1 . f . 1 . f 
-        . f 1 . 1 . f . 1 . f . 1 . 1 f 
-        f f f f f f f f f f . 1 . 1 . f 
-        f . 1 . 1 . f . f f 1 . 1 . 1 f 
-        f 1 . 1 . 1 f f . f . 1 . 1 . f 
-        f . 1 . 1 . f f f f f f f f f f 
-        f 1 . 1 . f . 1 . f 1 . 1 . f . 
-        f . 1 . f . 1 . 1 f . 1 . f . . 
-        f 1 . f . 1 . 1 . f 1 . f . . . 
-        f . f . 1 . 1 . 1 f . f . . . . 
-        f f . 1 . 1 . 1 . f f . . . . . 
-        f f f f f f f f f f . . . . . . 
-        `, SpriteKind.Felle)
-    // @highlight
-    tiles.placeOnTile(teine, tiles.getTileLocation(0, 0))
-})
-```
-
-### Steg 7 Plassere teiner
 Nå trenger du den ovale blokken ``||scene:tilemapLocation of mySprite||`` fra ``||scene:Scene||``-menyen.
 Dra den inn i det ovale feltet der det står ``||scene:tilemap col 0 row 0||``, slik at den erstatter det som står der.
 
@@ -501,13 +474,42 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         f f f f f f f f f f . . . . . . 
         `, SpriteKind.Felle)
     // @highlight
-    tiles.placeOnTile(teine, mySprite.tilemapLocation())
+    tiles.placeOnTile(mySprite, mySprite.tilemapLocation())
 })
 
 ```
 
+### Steg 7 Plassere teiner
+Du må gjøre noen endringer i de siste blokkene. Først må du endre den første ``||variables:mySprite||`` til ``||variables:teine||`` ved å trykke på ``||variables:mySprite||`` i ``||scene:place mySprite on top of tilemapLocation of mySprite||``-blokken og velge ``||variables:teine||``.
+Klikk på lyspæren om du er usikker på hvilken ``||variables:mySprite||`` som skal endres.
+Når du har gjort det, trykker du på Next.
+
+```blocks
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    teine = sprites.create(img`
+        . . . . . . f f f f f f f f f f 
+        . . . . . f f . 1 . 1 . 1 . f f 
+        . . . . f 1 f 1 . 1 . 1 . f . f 
+        . . . f 1 . f . 1 . 1 . f . 1 f 
+        . . f 1 . 1 f 1 . 1 . f . 1 . f 
+        . f 1 . 1 . f . 1 . f . 1 . 1 f 
+        f f f f f f f f f f . 1 . 1 . f 
+        f . 1 . 1 . f . f f 1 . 1 . 1 f 
+        f 1 . 1 . 1 f f . f . 1 . 1 . f 
+        f . 1 . 1 . f f f f f f f f f f 
+        f 1 . 1 . f . 1 . f 1 . 1 . f . 
+        f . 1 . f . 1 . 1 f . 1 . f . . 
+        f 1 . f . 1 . 1 . f 1 . f . . . 
+        f . f . 1 . 1 . 1 f . f . . . . 
+        f f . 1 . 1 . 1 . f f . . . . . 
+        f f f f f f f f f f . . . . . . 
+        `, SpriteKind.Felle)
+    // @highlight
+    tiles.placeOnTile(teine, mySprite.tilemapLocation())
+})
+```
 ### Steg 8 Plassere teiner
-Nå må du endre ordet ``||variables:mySprite||`` til ``||variables:minRobot||`` ved å klikke på det og velge ``||variables:minRobot||``.
+Nå må du endre den andre ``||variables:mySprite||`` til ``||variables:minRobot||`` ved å klikke på det og velge ``||variables:minRobot||``.
 Test spillet og sjekk om roboten din legger feller!
 Klikk Next for å gå videre.
 
@@ -601,7 +603,7 @@ Test spillet før du klikker Next.
 ```blocks
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     // @highlight
-    info.changeLifeBy(-1)
+    info.changeScoreBy(1)
     sprites.destroy(otherSprite)
 })
 ```
