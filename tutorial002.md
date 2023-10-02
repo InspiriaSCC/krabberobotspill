@@ -508,7 +508,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 
 ### Steg 8 Fange robotkrabbene
 Nå som du kan legge feller, må du få krabbene til å forsvinne når de går i en felle.
-Til det trenger du en ``||sprites:on sprite of kind Player overlaps othersprite of kind Player||``-blokk fra ``||sprites:Sprites||``-menyen.
+Til det trenger du en ``||sprites:on sprite of kind Player overlaps otherSprite of kind Player||``-blokk fra ``||sprites:Sprites||``-menyen.
 Hent en og legg den ved siden av resten av koden din.
 Klikk Next når du har fått blokken ut på arbeidsbordet.
 
@@ -518,3 +518,44 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Player, function (sprite, otherS
 	
 })
 ```
+
+### Steg 9 Fange robotkrabbene
+Nå må du få krabbene til å bli borte når de går i fella. Til det trenger du en ``||sprites:destroy mySprite||``-blokk.
+Hent en fra ``||sprites:Sprites||``-menyen og legg den inn i ``||sprites:on sprite of kind Player overlaps otherSprite of kind Player||``-blokken.
+
+```blocks
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Player, function (sprite, otherSprite) {
+    // @highlight
+    sprites.destroy(mySprite)
+})
+```
+
+### Steg 10 Fange robotkrabbene
+Nå må du gjøre noen endringer i ``||sprites:on sprite of kind Player overlaps othersprite of kind Player||``-blokken.
+Blokken sier noe om to sprites, ``||variables:sprite||`` og ``||variables:otherSprite||``.
+Foreløpig er begge disse av typen ``||sprites:Player||``. Nå skal du endre typen sprite for begge.
+Den første, som heter ``||variables:sprite||``, skal være av typen ``||sprites:Felle||``.
+Klikk på ordet ``||sprites:Player||`` etter ordet ``||variables:sprite||`` og velg ``||sprites:Felle||`` fra menyen som dukker opp.
+Så klikker du på ordet ``||sprites:Player||`` etter ordet ``||variables:otherSprite||`` og velger ``||sprites:Enemy||``.
+Klikk Next når du har gjort dette.
+
+```blocks
+// @highlight
+sprites.onOverlap(SpriteKind.Felle, SpriteKind.Enemy, function (sprite, otherSprite) {
+    sprites.destroy(mySprite)
+})
+```
+
+### Steg 11 Fange robotkrabbene
+Siden det kun er teinene some er sprites av typen "Felle", vil spriten som blokken kaller ``||variables:sprite||`` være en teine,
+og siden det kun er krabberobotene som er av typen "Enemy", vil spriten ``||variables:otherSprite||`` være en krabberobot.
+For at krabberoboten skal bli borte, må vi få blokken ``||sprites:destroy mySprite||`` til å ødelegge ``||variables:otherSprite||``.
+Klikk på ovalen der det står ``||variables:otherSprite||`` i ``||sprites:on sprite of kind Player overlaps othersprite of kind Player||``-blokken og dra den ned i feltet der det står ``||variables:mySprite||`` i blokken ``||sprites:destroy mySprite||``.
+
+```blocks
+sprites.onOverlap(SpriteKind.Felle, SpriteKind.Enemy, function (sprite, otherSprite) {
+    // @highlight
+    sprites.destroy(otherSprite)
+})
+```
+
