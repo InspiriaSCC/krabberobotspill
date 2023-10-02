@@ -1,6 +1,27 @@
 ### @activities true
 
 ```template
+namespace myTiles {
+    //% blockIdentity=images._tile
+    export const tile0 = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+}
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
     sprites.destroy(otherSprite)
@@ -8,7 +29,40 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 let krabbeRobot: Sprite = null
 info.setLife(6)
 scene.setBackgroundColor(9)
-tiles.setTilemap(tilemap`level1`)
+tiles.setTilemap(tiles.createTilemap(hex`2000200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002020000000000000000000000000000000000000000000000000000000000020202020000000000000000000000000000000000000000000000000000020202020202020200000000000000000000000000000000000000000000020202010101010102020200000000000000000000000000000000000202020202010101010101010101020000000000000000000000000000000202020101010101010101010101010102000000000000000000000000020202020101010101010101010101010101010200000000000000000000000002020202010101010101010101010101010101020000000000000000000000000000000202010101010101010101010101010202020000000000000000000000000000000202010101010101010101010101020202000000000000000000000000000000000202010101010101010101010202020200000000000000000000000000000000000202010101010101010101020000000000000000000000000000000000000000000202020101010101010102000000000000000000000000000000000000000000000002020101010101010202000000000000000000000000000000000000000002020201010101010101020200000000000000000000000000000000000000020101010101010101010102020000000000000000000000000000000000000002010101010101010101010102020000000000000000000000000000000002020201010101010101010101010202000000000000000000000000000000020202020201010101010101010101020000000000000000000000000000000202020202020101010101010101010202000000000000000000000000000000020202020202020101010101020202020000000000000000000000000000000002020202020202020202020202000000000000000000000000000000000000000002020202020202020202000000000000000000000000000000000000000000000002020202020202000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000`, img`
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+`, [myTiles.transparency16, sprites.castle.tileGrass1, sprites.castle.tilePath5], TileScale.Sixteen))
 let mySprite = sprites.create(img`
     ....................8a8aa8a8....................
     .................aaa888aa8a8aaa.................
@@ -662,13 +716,65 @@ Du kan velge hvor mange sekunder du har til rådighet ved å endre tallet 10 til
 Klikk Next når du har testet spillet og er fornøyd med valg av tid.
 
 ```blocks
-namespace SpriteKind {
-    export const Felle = SpriteKind.create()
-}
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    info.changeLifeBy(-1)
+    sprites.destroy(otherSprite)
+})
 let krabbeRobot: Sprite = null
 info.setLife(6)
 scene.setBackgroundColor(9)
-tiles.setTilemap(tilemap`level3`)
+tiles.setTilemap(tilemap`level1`)
+let mySprite = sprites.create(img`
+    ....................8a8aa8a8....................
+    .................aaa888aa8a8aaa.................
+    ..............aaa8aa8a8aa888aa8aaa..............
+    ...........8aa8aa8888a8aa8a8888aa8aa8...........
+    ........8888aa8aa8aa8a8aa8a8aa8aa8aa8888........
+    .....aaa8aa8aa8888aa8a8aa8a8aa8888aa8aa8aaa.....
+    ...aa8888aa8aa8aa8aa888aa888aa8aa8aa8aa8888aa...
+    dccaa8aa8aa8888aa8aa8a8aa8a8aa8aa8888aa8aa8aaccd
+    bcb888aa8aa8aa8aa8aa8a8aa8a8aa8aa8aa8aa8aa888bcb
+    dbbaa8aa8888aa8aa8888a8aa8a8888aa8aa8888aa8aabbd
+    dbbaa8aa8aa8aa8888aa8a8aa8a8aa8888aa8aa8aa8aabbd
+    dccaa8888aa8aa8aa8aa888aa888aa8aa8aa8aa8888aaccd
+    bcbaa8aa8aa8888aa8aa8a8aa8a8aa8aa8888aa8aa8aabcb
+    dbb888aa8aa8aa8aa8aa8a8aa8a8aa8aa8aa8aa8aa888bbd
+    dbbaa8aa8888aa8aa8aa8a8aa8a8aa8aa8aa8888aa8aabbd
+    dccaa8aa8aa8aa8aa8888a8aa8a8888aa8aa8aa8aa8aaccd
+    bcbaa8888aa8aa8888aa888aa888aa8888aa8aa8888aabcb
+    dbbaa8aa8aa8888aa8aa8a8aa8a8aa8aa8888aa8aa8aabbd
+    dbb888aa8aa8aa8aa8aa8a8aa8a8aa8aa8aa8aa8aa888bbd
+    dccaa8aa8888aa8aa8aa8a8aa8a8aa8aa8aa8888aa8aaccd
+    bcbaa8aa8aa8aa8aa8aa888aa888aa8aa8aa8aa8aa8aabcb
+    dbbaa8888aa8aa8aa888ccbbbbcc888aa8aa8aa8888aabbd
+    dbbaa8aa8aa8aa888ccbbbbbbbbbbcc888aa8aa8aa8aabbd
+    dcc888aa8aa888ccbbbbbccccccbbbbbcc888aa8aa888ccd
+    bcbaa8aa888ccbbbbbccbddddddbccbbbbbcc888aa8aabcb
+    dbbaa8aaccbbbbbccbddddddddddddbccbbbbbccaa8aabbd
+    dbbaaccbbbbcccbddddddddddddddddddbcccbbbbccaabbd
+    dcccbbbbcccbdddbccbbbbbbbbbbbbccbdddbcccbbbbcccd
+    ccccccccbbbbbbbcbddddddddddddddbcbbbbbbbcccccccc
+    bddddddddddddbcddddddddddddddddddcbddddddddddddb
+    bbcbdddddddddcbd1111111111111111dbcdddddddddbcbb
+    bbbcccccccccccd1bbbbbbbbbbbbbbbb1dcccccccccccbbb
+    bbbbdddddddddc11beeeeeeeeeeeeeeb11cdddddddddbbbb
+    bbb8aaaaaaa8dc1be3b33b33b33b33beb1cd8aaaaaaa8bbb
+    bbb888888888dc1be3b33b33b33b33beb1cd888888888bbb
+    bbb833333338dcbbf3b3effffffe33bebbcd833333338bbb
+    bbb83ff3ff38dcbbf3bffffffffff3bebbcd83ff3ff38bbb
+    bbb83cc3cc38dcbbf3effffffffffebebbcd83cc3cc38bbb
+    bbb833333338dcbbf3eeeeeeeeeeeebebbcd833333338bbb
+    cbb83ff3ff38dcbbe3b33b33b33b33bebbcd83ff3ff38bbc
+    cbb83cc3cc38dcbbe3b33b33b33b33bebbcd83cc3cc38bbc
+    ccbbbbbbbbbbdcbbe3b33b33b33feeeebbcdbbbbbbbbbbcc
+    .cbbdddddddddcbbe3b33b33b33ffffebbcdddddddddbbc.
+    ..cbdbbbdbbbdcbbf3b33b33b33f33febbcdbbbdbbbdbc..
+    ...cdbbbdbbbdcbbf3b33b33b33bffeebbcdbbbdbbbdc...
+    ....bddddddddcbbf3b33b33b33b33bebbcddddddddb....
+    .....bdbbbdddcbbf3b33b33b33b33bebbcdddbbbdb.....
+    ......bcccbbbcbbe3b33b33b33b33bebbcbbbcccb......
+    `, SpriteKind.Food)
+tiles.placeOnTile(mySprite, tiles.getTileLocation(15, 16))
 let minRobot = sprites.create(img`
     ........................
     ...........bb...........
@@ -695,61 +801,10 @@ let minRobot = sprites.create(img`
     ........545..545........
     .........5....5.........
     `, SpriteKind.Player)
+tiles.placeOnTile(minRobot, mySprite.tilemapLocation())
 controller.moveSprite(minRobot)
 scene.cameraFollowSprite(minRobot)
-tiles.placeOnRandomTile(minRobot, sprites.castle.tileGrass1)
-let mySprite = sprites.create(img`
-....................8a8aa8a8....................
-.................aaa888aa8a8aaa.................
-..............aaa8aa8a8aa888aa8aaa..............
-...........8aa8aa8888a8aa8a8888aa8aa8...........
-........8888aa8aa8aa8a8aa8a8aa8aa8aa8888........
-.....aaa8aa8aa8888aa8a8aa8a8aa8888aa8aa8aaa.....
-...aa8888aa8aa8aa8aa888aa888aa8aa8aa8aa8888aa...
-dccaa8aa8aa8888aa8aa8a8aa8a8aa8aa8888aa8aa8aaccd
-bcb888aa8aa8aa8aa8aa8a8aa8a8aa8aa8aa8aa8aa888bcb
-dbbaa8aa8888aa8aa8888a8aa8a8888aa8aa8888aa8aabbd
-dbbaa8aa8aa8aa8888aa8a8aa8a8aa8888aa8aa8aa8aabbd
-dccaa8888aa8aa8aa8aa888aa888aa8aa8aa8aa8888aaccd
-bcbaa8aa8aa8888aa8aa8a8aa8a8aa8aa8888aa8aa8aabcb
-dbb888aa8aa8aa8aa8aa8a8aa8a8aa8aa8aa8aa8aa888bbd
-dbbaa8aa8888aa8aa8aa8a8aa8a8aa8aa8aa8888aa8aabbd
-dccaa8aa8aa8aa8aa8888a8aa8a8888aa8aa8aa8aa8aaccd
-bcbaa8888aa8aa8888aa888aa888aa8888aa8aa8888aabcb
-dbbaa8aa8aa8888aa8aa8a8aa8a8aa8aa8888aa8aa8aabbd
-dbb888aa8aa8aa8aa8aa8a8aa8a8aa8aa8aa8aa8aa888bbd
-dccaa8aa8888aa8aa8aa8a8aa8a8aa8aa8aa8888aa8aaccd
-bcbaa8aa8aa8aa8aa8aa888aa888aa8aa8aa8aa8aa8aabcb
-dbbaa8888aa8aa8aa888ccbbbbcc888aa8aa8aa8888aabbd
-dbbaa8aa8aa8aa888ccbbbbbbbbbbcc888aa8aa8aa8aabbd
-dcc888aa8aa888ccbbbbbccccccbbbbbcc888aa8aa888ccd
-bcbaa8aa888ccbbbbbccbddddddbccbbbbbcc888aa8aabcb
-dbbaa8aaccbbbbbccbddddddddddddbccbbbbbccaa8aabbd
-dbbaaccbbbbcccbddddddddddddddddddbcccbbbbccaabbd
-dcccbbbbcccbdddbccbbbbbbbbbbbbccbdddbcccbbbbcccd
-ccccccccbbbbbbbcbddddddddddddddbcbbbbbbbcccccccc
-bddddddddddddbcddddddddddddddddddcbddddddddddddb
-bbcbdddddddddcbd1111111111111111dbcdddddddddbcbb
-bbbcccccccccccd1bbbbbbbbbbbbbbbb1dcccccccccccbbb
-bbbbdddddddddc11beeeeeeeeeeeeeeb11cdddddddddbbbb
-bbb8aaaaaaa8dc1be3b33b33b33b33beb1cd8aaaaaaa8bbb
-bbb888888888dc1be3b33b33b33b33beb1cd888888888bbb
-bbb833333338dcbbf3b3effffffe33bebbcd833333338bbb
-bbb83ff3ff38dcbbf3bffffffffff3bebbcd83ff3ff38bbb
-bbb83cc3cc38dcbbf3effffffffffebebbcd83cc3cc38bbb
-bbb833333338dcbbf3eeeeeeeeeeeebebbcd833333338bbb
-cbb83ff3ff38dcbbe3b33b33b33b33bebbcd83ff3ff38bbc
-cbb83cc3cc38dcbbe3b33b33b33b33bebbcd83cc3cc38bbc
-ccbbbbbbbbbbdcbbe3b33b33b33feeeebbcdbbbbbbbbbbcc
-.cbbdddddddddcbbe3b33b33b33ffffebbcdddddddddbbc.
-..cbdbbbdbbbdcbbf3b33b33b33f33febbcdbbbdbbbdbc..
-...cdbbbdbbbdcbbf3b33b33b33bffeebbcdbbbdbbbdc...
-....bddddddddcbbf3b33b33b33b33bebbcddddddddb....
-.....bdbbbdddcbbf3b33b33b33b33bebbcdddbbbdb.....
-......bcccbbbcbbe3b33b33b33b33bebbcbbbcccb......
-`, SpriteKind.Food)
-tiles.placeOnTile(mySprite, tiles.getTileLocation(15, 16))
-for (let index = 0; index < 25; index++) {
+for (let index = 0; index < 4; index++) {
     krabbeRobot = sprites.create(img`
         . . . . . . 1 . . 1 . . . . . . 
         . . . . . 1 f 1 1 f 1 . . . . . 
@@ -771,8 +826,7 @@ for (let index = 0; index < 25; index++) {
     tiles.placeOnRandomTile(krabbeRobot, assets.tile`transparency16`)
     krabbeRobot.follow(minRobot)
 }
-// @highlight
-info.startCountdown(10)
+
 ```
 
 
