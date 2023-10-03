@@ -364,7 +364,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 ### Steg 3 Lag en teine-sprite
 Inni blokken du la sist skal vi lage en sprite.
 En sprite er et lite, interaktivt bilde som kan plasseres rundt i spillverdenen, akkurat som krabberobotene og roboten du kontrollerer.
-Hent en den røde blokken ``||variables:set mySprite2 to sprite of kind Player||`` fra ``||sprites:Sprites||``-menyen. Klikk på ``||scene:Next||`` når du er ferdig.
+Hent en den røde blokken ``||variables:set mySprite2 to sprite of kind Player||`` fra ``||sprites:Sprites||``-menyen, og dra den inn i ``||controller:on A button pressed||``-blokken.
+Klikk på ``||scene:Next||`` når du er ferdig.
 
 ```blocks
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -628,14 +629,15 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 Krabbeteiner, krepseteiner og hummerteiner som blir mistet, blir liggende på havbunnen.
 Siden de ofte er laget av plast eller andre materialer som ikke brytes ned, fortsetter de å fange dyr så lenge de blir liggende.
 Da kalles de spøkelsesteiner.
-På nye teiner er det krav om at de må være laget slik at de åpnes når de blir liggende lenge, slik at dyr som går i fella lett kan rømme.
+På nye teiner er det krav om at de må være laget slik at de åpnes når de blir liggende lenge, sånn at dyr som går i fella lett kan rømme.
 
 ### Steg 14 Fjerne brukte teiner
 Som du ser blir teinene du slipper liggende på spillebrettet for alltid, akkurat som spøkelsesteiner i virkeligheten.
 For å gjøre teinene litt mer miljøvennlige, skal du få dem til å teleportere bort etter et halvt sekund.
 Det må du gjøre i den samme blokken med kode som du brukte for å lage teinene, ``||controller:on A button pressed||``-blokken, så du må legge til litt mer kode der.
 Du trenger to blokker, ``||loops:pause 100 ms||`` fra ``||loops:Loops||``-menyen og ``||sprites:destroy mySprite||`` fra ``||sprites:Sprites||`` menyen.
-Hent dem og legg dem inn i ``||controller:on A button pressed||``-blokken under ``||scene:place teine on top of tilemapLocation of minRobot||``.`
+Hent dem og legg dem inn i ``||controller:on A button pressed||``-blokken under ``||scene:place teine on top of tilemapLocation of minRobot||``.
+Pass på at ``||sprites:destroy mySprite||`` ligger nederst.
 Klikk på ``||scene:Next||`` når du er ferdig.
 
 ```blocks
@@ -669,7 +671,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 ### Steg 15 Bestem hvor lenge teinene skal ligge på spillebrettet
 Det trengs et par endringer på de to siste blokkene du brukte.
 Endre 100 ms til 500 ms i ``||loops:pause 100 ms||``-blokken, og endre ``||variables:mySprite||`` til ``||variables:teine||`` i ``||sprites:destroy mySprite||``-blokken.
-Nå kan du bare legge én og én teine, og hver teine varer bare i et halvt sekund før den fteleporteres bort, og du kan legge ut den neste.
+Nå kan du bare legge én og én teine, og hver teine varer i et halvt sekund før den teleporteres bort og du kan legge ut den neste.
 Klikk ``||scene:Next||`` for å gå videre.
 
 ```blocks
@@ -702,7 +704,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 ### Steg 16 Gjøre spillet vanskeligere.
 Du kan nå gjøre spillet vanskeligere på flere måter. Du kan for eksempel starte med mange flere krabberoboter.
 Om du endrer tallet 4 øverst i den grønne ``||loops:repeat 4 times||``-blokken til et høyere tall, lages det like mange krabberoboter som tallet du setter inn.
-Klarer du å overleve 25 krabberoboter? Endre tallet til 25 og test! Er 25 for mange? Test med færre!
+Klarer du å overleve 25 krabberoboter? Endre tallet til 25 og test! Er 25 for mange? Test med færre krabberoboter. 25 er gangske mange...
 klikk ``||scene:Next||`` når du har testet noen ganger.
 
 ```blocks
@@ -737,6 +739,7 @@ Til det trenger du først en ``||loops:forever||``-blokk fra ``||loops:Loops||``
 Klikk ``||scene:Next||`` for å gå videre.
 
 ```blocks
+// @highlight
 forever(function () {
 	
 })
@@ -750,7 +753,7 @@ Du kan klikke på lyspæren for å se hvordan hovedkoden og ``||loops:forever||`
 
 ```blocks
 let krabbeRobot: Sprite = null
-info.setLife(100)
+info.setLife(6)
 scene.setBackgroundColor(9)
 tiles.setTilemap(tiles.createTilemap(hex`2000200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002020000000000000000000000000000000000000000000000000000000000020202020000000000000000000000000000000000000000000000000000020202020202020200000000000000000000000000000000000000000000020202010101010102020200000000000000000000000000000000000202020202010101010101010101020000000000000000000000000000000202020101010101010101010101010102000000000000000000000000020202020101010101010101010101010101010200000000000000000000000002020202010101010101010101010101010101020000000000000000000000000000000202010101010101010101010101010202020000000000000000000000000000000202010101010101010101010101020202000000000000000000000000000000000202010101010101010101010202020200000000000000000000000000000000000202010101010101010101020000000000000000000000000000000000000000000202020101010101010102000000000000000000000000000000000000000000000002020101010101010202000000000000000000000000000000000000000002020201010101010101020200000000000000000000000000000000000000020101010101010101010102020000000000000000000000000000000000000002010101010101010101010102020000000000000000000000000000000002020201010101010101010101010202000000000000000000000000000000020202020201010101010101010101020000000000000000000000000000000202020202020101010101010101010202000000000000000000000000000000020202020202020101010101020202020000000000000000000000000000000002020202020202020202020202000000000000000000000000000000000000000002020202020202020202000000000000000000000000000000000000000000000002020202020202000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000`, img`
 ................................
@@ -900,7 +903,9 @@ forever(function () {
 
 Krabberobotene skal angripe i voksende bølger, slik at for hvert angrep kommer det en krabberobot mer enn i forrige.
 Til det trenger du en variabel. Klikk på ``||variables:Variables||``-menyen og velg ``||variables:Make a new variable||`` øverst. Gi den navnet ``||variables:krabbeAntall||``.
-Nå har du fått noen nye blokker i ``||variables:Variables||``-menyen. Hent den som heter ``||variables:set krabbeAntall to 0||`` og sett den inn øverst i hovedkoden.
+Nå har du fått noen nye blokker i ``||variables:Variables||``-menyen. Hent den som heter ``||variables:set krabbeAntall to 0||`` og sett den inn øverst i hovedkoden din i ``||loops:on start||``-blokken.
+VIKTIG: Denne blokken skal i ``||loops:on start||``-blokken, ``||variables:IKKE||```` i ``||loops:forever||``-blokken.
+Klikk ``||scene:Next||`` når du har blokken på rett plass.
 
 ```blocks
 info.setLife(6)
@@ -1060,8 +1065,8 @@ forever(function () {
 ### Steg 21 Angrepsbølger 5
 Foreløpig er variabelen ``||variables:krabbeAntall||`` satt til 0, derfor kommer det ingen krabber.
 Før du gjør noe med det, må du sette inn pausen som bestemmer hvor lang tid det går mellom angrepene.
-Hent en ``||loops:pause 100 ms||``-blokk fra ``||loops:Lopps||``-menyen og sett den inn i ``||loops:forever||``-blokken under resten av koden.
-Endre 100 til 5000. Da går det 5 sekunder mellom hvert krabbeangrep.
+Hent en ``||loops:pause 100 ms||``-blokk fra ``||loops:Lopps||``-menyen og sett den inn i ``||loops:forever||``-blokken UNDER ``||loops:repeat krabbeAntall times||``-blokken.
+Endre 100 ms til 5 seconds (da vil det stå 5000 i feltet til blokken). Da går det 5 sekunder mellom hvert krabbeangrep.
 Klikk ``||scene:Next||`` når du har gjort det.
 
 ```blocks
@@ -1224,6 +1229,7 @@ tiles.placeOnTile(minRobot, mySprite.tilemapLocation())
 controller.moveSprite(minRobot)
 scene.cameraFollowSprite(minRobot)
 let krabbeAntall = 0
+// @highlight
 info.startCountdown(30)
 forever(function () {
     for (let index = 0; index < krabbeAntall; index++) {
@@ -1264,6 +1270,5 @@ Når vinduet forsvinner, kommer du tilbake til spillet ditt, men nå har du tilg
 Inne på MakeCode Arcade finnes det også flere tutorialer som denne for mange typer spill, men de fleste er på engelsk.
 Om du klikker der det står ``||controller:MakCode Arcade||`` oppe i høyre hjørne av dette vinduet, kommer du ut i hovedmenyen.
 Der finner du mange aktiviteter om du har lyst til å lære mer om koding.
-Klikk på ``||scene:Done||`` for å avslutte tutorialen.
 
 <script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
